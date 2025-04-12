@@ -33,7 +33,6 @@ jobs:
 
       - name: Run unit tests
         run: npx vitest --coverage.enabled true
-      
+
       - name: Generate report coverage
         uses: davelosert/vitest-coverage-report-action@v2
-        
