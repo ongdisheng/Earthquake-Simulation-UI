@@ -12,6 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,3 +30,10 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint
+
+      - name: Run unit tests
+        run: npx vitest --coverage.enabled true
+      
+      - name: Generate report coverage
+        uses: davelosert/vitest-coverage-report-action@v2
+        
