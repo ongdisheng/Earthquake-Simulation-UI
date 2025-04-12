@@ -38,7 +38,7 @@ const SimulationForm = () => {
     earthquakeService
       .create(earthquakeObj)
       .then(() => {
-        notify("success", "");
+        notify("success", "Successfully simulated earthquake");
         onReset();
       })
       .catch((error) => {
