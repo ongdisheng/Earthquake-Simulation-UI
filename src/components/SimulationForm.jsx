@@ -93,6 +93,7 @@ const SimulationForm = () => {
             step="0.1"
             stringMode
             style={inputFieldStyle}
+            addonAfter="km"
           />
         </Form.Item>
 
