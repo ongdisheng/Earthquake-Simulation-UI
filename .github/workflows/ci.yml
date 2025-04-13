@@ -39,6 +39,8 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
 
       - name: Build project
+        env:
+          VITE_DISPATCHER_API_URL: ${{ secrets.VITE_DISPATCHER_API_URL }}
         run: npm run build
 
       - name: Upload production-ready build files
