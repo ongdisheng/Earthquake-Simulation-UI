@@ -2,6 +2,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, beforeEach } from "vitest";
 import SimulationForm from "../../src/components/SimulationForm";
+import { vi } from "vitest";
+import earthquakeService from "../../src/services/earthquake";
+
+vi.mock("../../src/services/earthquake", () => ({
+  default: {
+    create: vi.fn(),
+  },
+}));
 
 describe("SimulationForm component", () => {
   beforeEach(() => {
@@ -67,5 +75,25 @@ describe("SimulationForm component", () => {
     await waitFor(() => {
       expect(screen.queryByText("Select a county")).not.toBeInTheDocument();
     });
+  });
+
+  it("should display error message when earthquake data creation fails", async () => {
+    const user = userEvent.setup();
+
+    const mockCreate = earthquakeService.create;
+    mockCreate.mockRejectedValueOnce(new Error("Something went wrong"));
+
+    await user.type(screen.getByLabelText(/Epicenter Location/i), "Errorville");
+    await user.type(screen.getByLabelText(/Magnitude Value/i), "6.0");
+    await user.type(screen.getByLabelText(/Focal Depth/i), "10");
+
+    const submitButton = screen.getByRole("button", { name: /Submit/i });
+    await user.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
+    });
+
+    expect(mockCreate).toHaveBeenCalledOnce();
   });
 });
