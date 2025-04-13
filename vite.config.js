@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import eslint from "vite-plugin-eslint";
 
 // set code coverage threshold value
-const thresholdValue = 0;
+const thresholdValue = 80;
 
 // https://vite.dev/config/
 export default defineConfig({
