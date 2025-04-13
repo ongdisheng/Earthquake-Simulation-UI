@@ -14,6 +14,7 @@ export default defineConfig({
     setupFiles: "./tests/setup.js",
     coverage: {
       reporter: ["text", "json-summary", "json"],
+      reportOnFailure: true,
       thresholds: {
         lines: thresholdValue,
         branches: thresholdValue,

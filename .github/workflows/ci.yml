@@ -35,4 +35,5 @@ jobs:
         run: npx vitest --coverage.enabled true
 
       - name: Generate code coverage report
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
