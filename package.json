@@ -1,5 +1,6 @@
 {
   "name": "simulation-ui",
+  "homepage": "https://ongdisheng.github.io/Earthquake-Simulation-UI",
   "private": true,
   "version": "0.0.0",
   "type": "module",
