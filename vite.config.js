@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { configDefaults } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import eslint from "vite-plugin-eslint";
 
@@ -15,7 +16,7 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json-summary", "json"],
       reportOnFailure: true,
-      exclude: ["src/main.jsx"],
+      exclude: [...configDefaults.exclude, "src/main.jsx"],
       thresholds: {
         lines: thresholdValue,
         branches: thresholdValue,
