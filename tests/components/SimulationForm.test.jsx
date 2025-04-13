@@ -13,6 +13,7 @@ vi.mock("../../src/services/earthquake", () => ({
 
 describe("SimulationForm component", () => {
   beforeEach(() => {
+    vi.clearAllMocks();
     render(<SimulationForm />);
   });
 
@@ -95,5 +96,35 @@ describe("SimulationForm component", () => {
     });
 
     expect(mockCreate).toHaveBeenCalledOnce();
+  });
+
+  it("should display success message when earthquake data is simulated", async () => {
+    const user = userEvent.setup();
+
+    const mockCreate = earthquakeService.create;
+    mockCreate.mockResolvedValueOnce({});
+
+    await user.type(screen.getByLabelText(/Epicenter Location/i), "Test City");
+    await user.type(screen.getByLabelText(/Magnitude Value/i), "6.3");
+    await user.type(screen.getByLabelText(/Focal Depth/i), "25");
+
+    await user.click(screen.getByRole("button", { name: /Submit/i }));
+
+    await waitFor(() => {
+      expect(mockCreate).toHaveBeenCalled();
+    });
+
+    const calledArgs = mockCreate.mock.calls[0][0];
+    expect(calledArgs).toMatchObject({
+      epicenterLocation: "Test City",
+      magnitudeValue: "6.3",
+      focalDepth: "25",
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Successfully simulated earthquake/i),
+      ).toBeInTheDocument();
+    });
   });
 });
