@@ -143,7 +143,10 @@ const SimulationForm = () => {
                       >
                         <InputNumber min="0" max="10" step="0.1" stringMode />
                       </Form.Item>
-                      <MinusCircleOutlined onClick={() => remove(name)} />
+                      <MinusCircleOutlined
+                        data-testid={`remove-icon-${name}`}
+                        onClick={() => remove(name)}
+                      />
                     </Space>
                   );
                 })}
