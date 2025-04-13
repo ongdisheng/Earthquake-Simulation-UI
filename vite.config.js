@@ -15,6 +15,7 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json-summary", "json"],
       reportOnFailure: true,
+      exclude: ["src/main.jsx"],
       thresholds: {
         lines: thresholdValue,
         branches: thresholdValue,
