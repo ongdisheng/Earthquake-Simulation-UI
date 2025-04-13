@@ -6,7 +6,7 @@ const App = () => (
   <div>
     <Card
       hoverable={false}
-      title={<h2 style={{ textAlign: "center" }}>Earthquake Simulation</h2>}
+      title={<h1 style={{ textAlign: "center" }}>Earthquake Simulation</h1>}
       style={{ width: 600, margin: "0 auto", backgroundColor: "#f0f0f0" }}
     >
       <SimulationForm />
