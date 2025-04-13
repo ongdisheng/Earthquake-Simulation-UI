@@ -52,7 +52,7 @@ describe("SimulationForm component", () => {
     });
   });
 
-  it("should be able to add shaking area fields", async () => {
+  it("should be able to add and remove shaking area fields", async () => {
     const user = userEvent.setup();
 
     const addButton = screen.getByRole("button", { name: /Add/i });
@@ -60,5 +60,12 @@ describe("SimulationForm component", () => {
 
     const selectPlaceholder = await screen.findByText("Select a county");
     expect(selectPlaceholder).toBeInTheDocument();
+
+    const removeIcon = screen.getByTestId("remove-icon-0");
+    await user.click(removeIcon);
+
+    await waitFor(() => {
+      expect(screen.queryByText("Select a county")).not.toBeInTheDocument();
+    });
   });
 });
