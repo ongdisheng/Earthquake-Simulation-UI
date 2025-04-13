@@ -9,7 +9,7 @@ const thresholdValue = 0;
 export default defineConfig({
   plugins: [react(), eslint()],
   test: {
-    environment: "jsdom",
+    environment: "happy-dom",
     globals: true,
     setupFiles: "./tests/setup.js",
     coverage: {
