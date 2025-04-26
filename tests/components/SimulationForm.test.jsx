@@ -1,8 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import SimulationForm from "../../src/components/SimulationForm";
-import { vi } from "vitest";
 import earthquakeService from "../../src/services/earthquake";
 
 vi.mock("../../src/services/earthquake", () => ({
