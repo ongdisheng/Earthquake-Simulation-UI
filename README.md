@@ -1,12 +1,41 @@
-# React + Vite
+# Simulation UI
+[![Build](https://github.com/TSMC-NTU-G4/simulation-ui/actions/workflows/build.yml/badge.svg?event=push)](https://github.com/TSMC-NTU-G4/simulation-ui/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=coverage)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project setup
+```bash
+npm install
+```
 
-Currently, two official plugins are available:
+## Start the development server
+```bash
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Build for production
+```bash
+npm run build
+```
 
-## Expanding the ESLint configuration
+## Lint and fix files
+```bash
+npm run lint
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Run tests
+```bash
+npm run test
+```
+
+## Customize Vite configuration
+See [Configuration Reference](https://vite.dev/config/).
