@@ -9,7 +9,6 @@ const thresholdValue = 80;
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), eslint()],
-  base: "/Earthquake-Simulation-UI/",
   test: {
     environment: "happy-dom",
     globals: true,
