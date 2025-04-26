@@ -38,6 +38,12 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Build project
         env:
           VITE_DISPATCHER_API_URL: ${{ secrets.VITE_DISPATCHER_API_URL }}
