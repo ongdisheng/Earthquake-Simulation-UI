@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Build
 
 on:
   push:
@@ -8,8 +8,12 @@ on:
     branches:
       - main
 
+env:
+  VITE_DISPATCHER_API_URL: ${{ secrets.VITE_DISPATCHER_API_URL }}
+
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     permissions:
@@ -38,14 +42,11 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
 
-      - name: SonarQube Scan
+      - name: SonarQube scan
         uses: SonarSource/sonarqube-scan-action@v5.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build project
-        env:
-          VITE_DISPATCHER_API_URL: ${{ secrets.VITE_DISPATCHER_API_URL }}
         run: npm run build
-
