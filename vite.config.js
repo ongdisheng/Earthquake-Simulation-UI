@@ -14,7 +14,7 @@ export default defineConfig({
     globals: true,
     setupFiles: "./tests/setup.js",
     coverage: {
-      reporter: ["text", "json-summary", "json"],
+      reporter: ["text", "json-summary", "json", "lcov"],
       reportOnFailure: true,
       exclude: [...configDefaults.exclude, "src/main.jsx"],
       thresholds: {
