@@ -25,3 +25,8 @@ dist-ssr
 
 # Environment variable files
 .env
+
+# Coverage directory and files
+coverage
+.scannerwork
+*.lcov
