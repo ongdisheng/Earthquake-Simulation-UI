@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  VITE_DISPATCHER_API_URL: ${{ secrets.VITE_DISPATCHER_API_URL }}
+  VITE_BACKEND_BASE_URL: ${{ secrets.VITE_BACKEND_BASE_URL }}
 
 jobs:
   build:
