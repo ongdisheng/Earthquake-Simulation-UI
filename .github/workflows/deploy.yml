@@ -9,7 +9,8 @@ on:
       - completed
 
 env:
-  REGISTRY_HOSTNAME: gcr.io
+  REGION_NAME: asia-east1-docker.pkg.dev
+  REPO_NAME: images-repo
   IMAGE_NAME: simulation-ui
   PROJECT_ID: tsmc-ntu-g4
 
@@ -44,16 +45,16 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2.1.4
 
       - name: Configure Docker client
-        run: gcloud auth configure-docker
+        run: gcloud auth configure-docker ${{ env.REGION_NAME }}
 
       - name: Build image
         run: |
           echo "Short SHA: ${{ needs.shortsha.outputs.shortsha }}"
-          docker build -t "$REGISTRY_HOSTNAME/$PROJECT_ID/$IMAGE_NAME:${{ needs.shortsha.outputs.shortsha }}" \
-                       -t "$REGISTRY_HOSTNAME/$PROJECT_ID/$IMAGE_NAME:latest" \
+          docker build -t "${REGION_NAME}/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:${{ needs.shortsha.outputs.shortsha }}" \
+                       -t "${REGION_NAME}/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:latest" \
                        --build-arg VITE_BACKEND_BASE_URL="${{ secrets.VITE_BACKEND_BASE_URL }}" .
 
       - name: Push image
         run: |
-          docker push "$REGISTRY_HOSTNAME/$PROJECT_ID/$IMAGE_NAME:${{ needs.shortsha.outputs.shortsha }}"
-          docker push "$REGISTRY_HOSTNAME/$PROJECT_ID/$IMAGE_NAME:latest"
+          docker push "${REGION_NAME}/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:${{ needs.shortsha.outputs.shortsha }}"
+          docker push "${REGION_NAME}/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:latest"
