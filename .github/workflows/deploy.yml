@@ -10,7 +10,7 @@ on:
 
 env:
   REGION_NAME: asia-east1-docker.pkg.dev
-  REPO_NAME: images-repo
+  REPO_NAME: app-images
   IMAGE_NAME: simulation-ui
   PROJECT_ID: tsmc-ntu-g4
 
