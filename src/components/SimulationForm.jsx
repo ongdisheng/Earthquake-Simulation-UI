@@ -29,12 +29,16 @@ const SimulationForm = () => {
 
   // simulate an earthquake incident
   const onFinish = (values) => {
-    // include current time
+    // include current time and source
     const originTime = dayjs().format("YYYY-MM-DD HH:mm:ss");
+    const source = "Simulation";
+
     const earthquakeObj = {
       ...values,
       originTime,
+      source,
     };
+
     earthquakeService
       .create(earthquakeObj)
       .then(() => {
