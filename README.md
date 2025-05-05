@@ -1,16 +1,16 @@
 # Frontend
-[![Build](https://github.com/TSMC-NTU-G4/simulation-ui/actions/workflows/build.yml/badge.svg?event=push)](https://github.com/TSMC-NTU-G4/simulation-ui/actions/workflows/build.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=coverage)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
+[![Build](https://github.com/TSMC-NTU-G4/frontend/actions/workflows/build.yml/badge.svg?event=push)](https://github.com/TSMC-NTU-G4/frontend/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_frontend)
 
 ## Project setup
 ```bash
