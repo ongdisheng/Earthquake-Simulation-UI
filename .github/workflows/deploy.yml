@@ -11,7 +11,7 @@ on:
 env:
   REGION_NAME: asia-east1-docker.pkg.dev
   REPO_NAME: app-images
-  IMAGE_NAME: simulation-ui
+  IMAGE_NAME: frontend
   PROJECT_ID: tsmc-ntu-g4
 
 jobs:
