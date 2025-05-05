@@ -1,4 +1,4 @@
-# Simulation UI
+# Frontend
 [![Build](https://github.com/TSMC-NTU-G4/simulation-ui/actions/workflows/build.yml/badge.svg?event=push)](https://github.com/TSMC-NTU-G4/simulation-ui/actions/workflows/build.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=TSMC-NTU-G4_simulation-ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=TSMC-NTU-G4_simulation-ui)
