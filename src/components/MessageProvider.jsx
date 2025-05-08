@@ -2,6 +2,7 @@
 import React from "react";
 import { message } from "antd";
 import { setMessageApi } from "../utils/notificationHelper";
+import PropTypes from "prop-types";
 
 const MessageProvider = ({ children }) => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -15,6 +16,10 @@ const MessageProvider = ({ children }) => {
       {children}
     </>
   );
+};
+
+MessageProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default MessageProvider;
