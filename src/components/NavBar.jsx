@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Menu } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // navigation bar items
 const items = [
@@ -19,18 +19,17 @@ const items = [
 ];
 
 const NavBar = () => {
-  const [current, setCurrent] = useState("/");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onClick = (e) => {
-    setCurrent(e.key);
     navigate(e.key); // navigate to the route
   };
 
   return (
     <Menu
       onClick={onClick}
-      selectedKeys={[current]}
+      selectedKeys={[location.pathname]}
       mode="horizontal"
       items={items}
       theme="dark"
