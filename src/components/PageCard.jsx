@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "antd";
+import PropTypes from "prop-types";
 
 const PageCard = ({ title, children }) => {
   return (
@@ -18,6 +19,11 @@ const PageCard = ({ title, children }) => {
       </Card>
     </div>
   );
+};
+
+PageCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default PageCard;
