@@ -4,6 +4,7 @@ import {
   getAlertSuppressTime,
   updateAlertSuppressTime,
 } from "../services/settings";
+import { notify } from "../utils/notificationHelper";
 
 const { Text } = Typography;
 const layout = {
@@ -29,6 +30,7 @@ const SettingsForm = () => {
   const onFinish = (values) => {
     updateAlertSuppressTime(values).then((res) => {
       setSuppressTime(res.data.data);
+      notify("success", res.data.message);
       form.resetFields();
     });
   };

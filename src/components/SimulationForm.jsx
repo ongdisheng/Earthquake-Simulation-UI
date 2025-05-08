@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Form, InputNumber, Select, Space, Input, message } from "antd";
+import { Button, Form, InputNumber, Select, Space, Input } from "antd";
 import dayjs from "dayjs";
 import earthquakeService from "../services/earthquake";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { notify } from "../utils/notificationHelper";
 
 const COUNTY = ["Taipei", "Hsinchu", "Taichung", "Tainan"];
 const layout = {
@@ -16,16 +17,7 @@ const inputFieldStyle = { width: "80%" };
 
 const SimulationForm = () => {
   const [form] = Form.useForm();
-  const [messageApi, contextHolder] = message.useMessage();
   const shakingArea = Form.useWatch("shakingArea", form) || [];
-
-  // show notification messages
-  const notify = (type, message) => {
-    messageApi.open({
-      type: type,
-      content: `Simulation: ${message}`,
-    });
-  };
 
   // simulate an earthquake incident
   const onFinish = (values) => {
@@ -41,12 +33,13 @@ const SimulationForm = () => {
 
     earthquakeService
       .create(earthquakeObj)
-      .then(() => {
-        notify("success", "Successfully simulated earthquake");
+      .then((res) => {
+        console.log(res);
+        notify("success", res.data.message);
         onReset();
       })
       .catch((error) => {
-        notify("error", error);
+        notify("error", error.message);
       });
   };
 
@@ -56,7 +49,6 @@ const SimulationForm = () => {
 
   return (
     <>
-      {contextHolder}
       <Form
         {...layout}
         form={form}
