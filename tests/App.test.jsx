@@ -6,7 +6,7 @@ describe("App component", () => {
   it("should render the title in h1", () => {
     render(<App />);
     const heading = screen.getByRole("heading", {
-      name: "Earthquake Simulation",
+      name: "Earthquake Simulator",
     });
     expect(heading).toBeInTheDocument();
   });
