@@ -40,4 +40,21 @@ describe("earthquake service", () => {
     );
     expect(result).toEqual(responseData);
   });
+
+  it("should update earthquake alert", async () => {
+    const mockResponse = { data: "response data" };
+    axios.put.mockResolvedValue(mockResponse);
+
+    const id = 1;
+    const updatedData = { name: "Updated Alert" };
+
+    const result = await earthquakeService.updateAlert(id, updatedData);
+
+    expect(axios.put).toHaveBeenCalledWith(
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/earthquake/alerts/1`,
+      updatedData,
+    );
+
+    expect(result).toEqual(mockResponse);
+  });
 });
