@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, waitFor, screen } from "@testing-library/react";
+import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import AlertsPanel from "../../src/components/AlertsPanel";
 import earthquakeService from "../../src/services/earthquake";
 
@@ -38,6 +38,19 @@ describe("AlertsPanel component", () => {
       expect(screen.getByText("Taipei")).toBeInTheDocument();
       expect(screen.getByText("L2")).toBeInTheDocument();
       expect(screen.getByText("Yes")).toBeInTheDocument();
+    });
+  });
+
+  it("should allow editing 'Has Damage' and 'Needs Command Center'", async () => {
+    render(<AlertsPanel />);
+
+    const editButton = await screen.findByText("Edit");
+    fireEvent.click(editButton);
+
+    fireEvent.click(screen.getByText("Save"));
+
+    await waitFor(() => {
+      expect(screen.getByText("Submit")).toBeInTheDocument();
     });
   });
 });
