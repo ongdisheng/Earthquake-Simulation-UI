@@ -41,7 +41,7 @@ describe("AlertsPanel component", () => {
     });
   });
 
-  it("should allow editing 'Has Damage' and 'Needs Command Center'", async () => {
+  it("should able to edit, save and submit", async () => {
     render(<AlertsPanel />);
 
     const editButton = await screen.findByText("Edit");
