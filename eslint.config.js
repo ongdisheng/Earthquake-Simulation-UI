@@ -3,6 +3,8 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import parserTs from "@typescript-eslint/parser";
+import pluginTs from "@typescript-eslint/eslint-plugin";
 
 export default [
   { ignores: ["dist"] },
@@ -31,5 +33,25 @@ export default [
       ],
     },
   },
+
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      parser: parserTs,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: { jsx: true },
+      },
+      globals: globals.browser,
+    },
+    plugins: {
+      "@typescript-eslint": pluginTs,
+    },
+    rules: {
+      ...pluginTs.configs.recommended.rules,
+    },
+  },
+
   eslintPluginPrettierRecommended,
 ];
