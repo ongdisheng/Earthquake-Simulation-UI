@@ -8,6 +8,7 @@ import { notify } from "../../src/utils/notificationHelper";
 vi.mock("../../src/services/earthquake", () => ({
   default: {
     getAlerts: vi.fn(),
+    updateAlert: vi.fn(),
   },
 }));
 vi.mock("../../src/utils/notificationHelper", () => ({
@@ -34,10 +35,11 @@ const mockData = {
 
 describe("AlertsPanel component", () => {
   beforeEach(() => {
-    earthquakeService.getAlerts.mockResolvedValue(mockData);
+    earthquakeService.updateAlert.mockResolvedValue({});
   });
 
   it("should render data from API", async () => {
+    earthquakeService.getAlerts.mockResolvedValue(mockData);
     render(<AlertsPanel />);
 
     await waitFor(() => {
@@ -48,6 +50,7 @@ describe("AlertsPanel component", () => {
   });
 
   it("should able to edit, save and submit", async () => {
+    earthquakeService.getAlerts.mockResolvedValue(mockData);
     render(<AlertsPanel />);
 
     const editButton = await screen.findByText("Edit");
@@ -61,17 +64,58 @@ describe("AlertsPanel component", () => {
   });
 
   it("should show error notification when hasDamage or needsCommandCenter is empty on submit", async () => {
+    earthquakeService.getAlerts.mockResolvedValue(mockData);
+    render(<AlertsPanel />);
+
+    const submitButton = await screen.findByText("Submit");
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(notify).toHaveBeenCalledWith(
+        "error",
+        "Please update both hasDamage and needsCommandCenter before submit",
+      );
+    });
+  });
+
+  it("should show success notification and update alert status to PROCESSED when submit is successful", async () => {
+    const updatedAlert = {
+      data: {
+        data: [
+          {
+            id: "test-id-1",
+            source: "Simulation",
+            location: "Taipei",
+            severityLevel: 2,
+            originTime: "2025-05-09T15:46:13",
+            hasDamage: 1,
+            needsCommandCenter: 1,
+          },
+        ],
+      },
+    };
+
+    earthquakeService.getAlerts.mockResolvedValue(updatedAlert);
     render(<AlertsPanel />);
 
     const submitButton = await screen.findByText("Submit");
 
     fireEvent.click(submitButton);
 
-    // Wait for the error notification
     await waitFor(() => {
       expect(notify).toHaveBeenCalledWith(
-        "error",
-        "Please update both hasDamage and needsCommandCenter before submit",
+        "success",
+        "You have responded to alert test-id-1",
+      );
+    });
+
+    await waitFor(() => {
+      expect(earthquakeService.updateAlert).toHaveBeenCalledWith(
+        "test-id-1",
+        expect.objectContaining({
+          status: "PROCESSED",
+          hasDamage: "1",
+        }),
       );
     });
   });
