@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import AlertsPanel from "../../src/components/AlertsPanel";
 import earthquakeService from "../../src/services/earthquake";
+import { notify } from "../../src/utils/notificationHelper";
 
 // mock service
 vi.mock("../../src/services/earthquake", () => ({
@@ -9,6 +10,11 @@ vi.mock("../../src/services/earthquake", () => ({
     getAlerts: vi.fn(),
   },
 }));
+vi.mock("../../src/utils/notificationHelper", () => ({
+  notify: vi.fn(),
+}));
+
+vi.mock("axios");
 
 const mockData = {
   data: {
@@ -20,7 +26,7 @@ const mockData = {
         severityLevel: 2,
         originTime: "2025-05-09T15:46:13",
         hasDamage: 1,
-        needsCommandCenter: 0,
+        needsCommandCenter: "",
       },
     ],
   },
@@ -51,6 +57,22 @@ describe("AlertsPanel component", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Submit")).toBeInTheDocument();
+    });
+  });
+
+  it("should show error notification when hasDamage or needsCommandCenter is empty on submit", async () => {
+    render(<AlertsPanel />);
+
+    const submitButton = await screen.findByText("Submit");
+
+    fireEvent.click(submitButton);
+
+    // Wait for the error notification
+    await waitFor(() => {
+      expect(notify).toHaveBeenCalledWith(
+        "error",
+        "Please update both hasDamage and needsCommandCenter before submit",
+      );
     });
   });
 });
