@@ -5,6 +5,7 @@ import enUS from "antd/locale/en_US";
 import React, { useState } from "react";
 import earthquakeService from "../services/earthquake";
 import dayjs from "dayjs";
+import { notify } from "../utils/notificationHelper";
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -110,7 +111,30 @@ export default () => {
         <a
           key="submit"
           onClick={() => {
-            setDataSource(dataSource.filter((item) => item.id !== record.id));
+            if (record.hasDamage === "" || record.needsCommandCenter === "") {
+              notify(
+                "error",
+                "Please update both hasDamage and needsCommandCenter before submit",
+              );
+            } else {
+              const updatedAlert = {
+                ...record,
+                status: "PROCESSED",
+                processedTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+              };
+
+              earthquakeService
+                .updateAlert(record.id, updatedAlert)
+                .then(() => {
+                  setDataSource(
+                    dataSource.filter((item) => item.id !== record.id),
+                  );
+                  notify("success", `You have responded to alert ${record.id}`);
+                })
+                .catch((error) => {
+                  notify("error", error.message);
+                });
+            }
           }}
         >
           Submit

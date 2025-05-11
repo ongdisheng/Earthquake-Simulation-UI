@@ -10,4 +10,8 @@ const getAlerts = async () => {
   return response;
 };
 
-export default { create, getAlerts };
+const updateAlert = (id, updatedData) => {
+  return axios.put(baseUrl + `/alerts/${id}`, updatedData);
+};
+
+export default { create, getAlerts, updateAlert };
