@@ -78,4 +78,45 @@ describe("App component", () => {
       expect(screen.queryByTestId("alert-alert-1")).toBeNull();
     });
   });
+
+  it("handles ADD type gracefully", async () => {
+    render(<App />);
+    const data = {
+      type: "ADD",
+      alert: { id: "alert-3" },
+    };
+
+    await act(() => {
+      mockWebSocketInstance.onmessage?.({ data: JSON.stringify(data) });
+    });
+  });
+
+  it("handles unknown type", async () => {
+    console.warn = vi.fn(); // mock warn
+    render(<App />);
+    const data = {
+      type: "RANDOM_TYPE",
+      alert: { id: "alert-4" },
+    };
+
+    await act(() => {
+      mockWebSocketInstance.onmessage?.({ data: JSON.stringify(data) });
+    });
+
+    expect(console.warn).toHaveBeenCalledWith("Unhandled type:", "RANDOM_TYPE");
+  });
+
+  it("handles malformed JSON", async () => {
+    console.error = vi.fn(); // mock error
+    render(<App />);
+
+    await act(() => {
+      mockWebSocketInstance.onmessage?.({ data: "NOT_JSON" });
+    });
+
+    expect(console.error).toHaveBeenCalledWith(
+      "WebSocket message error",
+      expect.any(SyntaxError),
+    );
+  });
 });
