@@ -26,9 +26,7 @@ const App = () => {
 
         switch (data.type) {
           case "AUTOCLOSED":
-            console.log(alert);
             alertsPanelRef.current?.handleAutoClose(alert.id);
-            // handleAutoClose(alert.id);
             break;
           case "ADD":
             // handleAdd(alert);
