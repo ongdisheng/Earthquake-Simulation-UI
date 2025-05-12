@@ -2,10 +2,11 @@ import type { ProColumns } from "@ant-design/pro-components";
 import { EditableProTable } from "@ant-design/pro-components";
 import { ConfigProvider } from "antd";
 import enUS from "antd/locale/en_US";
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import earthquakeService from "../services/earthquake";
 import dayjs from "dayjs";
 import { notify } from "../utils/notificationHelper";
+import { AlertDataType } from "../types/alert";
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -15,19 +16,20 @@ const waitTime = (time: number = 100) => {
   });
 };
 
-type AlertDataType = {
-  id: React.Key;
-  source?: string;
-  location?: string;
-  severityLevel?: number;
-  originTime?: string;
-  hasDamage?: string;
-  needsCommandCenter?: string;
-};
+export interface AlertsPanelHandle {
+  handleAutoClose: (id: string) => void;
+}
 
-export default () => {
+const AlertsPanel = forwardRef<AlertsPanelHandle>((_, ref) => {
   const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([]);
   const [dataSource, setDataSource] = useState<readonly AlertDataType[]>([]);
+
+  useImperativeHandle(ref, () => ({
+    handleAutoClose: (id: string) => {
+      setDataSource((prev) => prev.filter((alert) => alert.id !== id));
+      notify("info", `Alert ${id} has been auto-closed.`);
+    },
+  }));
 
   const columns: ProColumns<AlertDataType>[] = [
     {
@@ -202,4 +204,6 @@ export default () => {
       </ConfigProvider>
     </>
   );
-};
+});
+
+export default AlertsPanel;
