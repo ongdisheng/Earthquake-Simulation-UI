@@ -52,7 +52,8 @@ jobs:
           echo "Short SHA: ${{ needs.shortsha.outputs.shortsha }}"
           docker build -t "${REGION_NAME}/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:${{ needs.shortsha.outputs.shortsha }}" \
                        -t "${REGION_NAME}/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:latest" \
-                       --build-arg VITE_BACKEND_BASE_URL="${{ secrets.VITE_BACKEND_BASE_URL }}" .
+                       --build-arg VITE_BACKEND_BASE_URL="${{ secrets.VITE_BACKEND_BASE_URL }}" \
+                       --build-arg VITE_BACKEND_WEBSOCKET_URL="${{ secrets.VITE_BACKEND_WEBSOCKET_URL }}" .
 
       - name: Push image
         run: |
