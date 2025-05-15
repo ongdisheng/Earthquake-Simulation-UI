@@ -17,7 +17,7 @@ const App = () => {
     hasInitialized.current = true;
 
     ws.current = new WebSocket(
-      import.meta.env.VITE_BACKEND_WEBSOCKET_URL + "/ws/alerts",
+      `${import.meta.env.VITE_BACKEND_WEBSOCKET_URL || ""}/ws/alerts`,
     );
 
     ws.current.onmessage = (event) => {

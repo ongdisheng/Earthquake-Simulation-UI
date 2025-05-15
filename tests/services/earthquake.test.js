@@ -17,10 +17,7 @@ describe("earthquake service", () => {
     axios.post.mockResolvedValue(responseData);
 
     const result = await earthquakeService.create(newData);
-    expect(axios.post).toHaveBeenCalledWith(
-      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/earthquake`,
-      newData,
-    );
+    expect(axios.post).toHaveBeenCalledWith(`/api/earthquake`, newData);
     expect(result).toEqual(responseData);
   });
 
@@ -35,9 +32,7 @@ describe("earthquake service", () => {
     axios.get.mockResolvedValue(responseData);
 
     const result = await earthquakeService.getAlerts();
-    expect(axios.get).toHaveBeenCalledWith(
-      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/earthquake/alerts`,
-    );
+    expect(axios.get).toHaveBeenCalledWith(`/api/earthquake/alerts`);
     expect(result).toEqual(responseData);
   });
 
@@ -51,7 +46,7 @@ describe("earthquake service", () => {
     const result = await earthquakeService.updateAlert(id, updatedData);
 
     expect(axios.put).toHaveBeenCalledWith(
-      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/earthquake/alerts/1`,
+      `/api/earthquake/alerts/1`,
       updatedData,
     );
 
