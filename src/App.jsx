@@ -21,8 +21,11 @@ const App = () => {
     );
 
     ws.current.onmessage = (event) => {
+      const message = event.data;
+      if (message === "ping") return;
+
       try {
-        const data = JSON.parse(event.data);
+        const data = JSON.parse(message);
         const alert =
           typeof data.alert === "string" ? JSON.parse(data.alert) : data.alert;
 
