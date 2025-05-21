@@ -29,6 +29,21 @@ const AlertsPanel = forwardRef<AlertsPanelHandle>((_, ref) => {
       setDataSource((prev) => prev.filter((alert) => alert.id !== id));
       notify("info", `Alert ${id} has been auto-closed.`);
     },
+    handleAdd: (alert: AlertDataType) => {
+      const formattedAlert = {
+        ...alert,
+        originTime: dayjs(alert.originTime).format("YYYY-MM-DD HH:mm:ss"),
+        hasDamage:
+          String(alert.hasDamage) === "-1" ? "" : String(alert.hasDamage),
+        needsCommandCenter:
+          String(alert.needsCommandCenter) === "-1"
+            ? ""
+            : String(alert.needsCommandCenter),
+      };
+
+      setDataSource((prev) => [formattedAlert, ...prev]); // Always add to top
+      notify("info", `New alert received: ${alert.id}`);
+    },
   }));
 
   const columns: ProColumns<AlertDataType>[] = [

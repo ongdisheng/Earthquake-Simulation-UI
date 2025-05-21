@@ -30,8 +30,8 @@ const App = () => {
           case "AUTOCLOSED":
             alertsPanelRef.current?.handleAutoClose(alert.id);
             break;
-          case "ADD":
-            // handleAdd(alert);
+          case "OPEN":
+            alertsPanelRef.current?.handleAdd(alert);
             break;
           default:
             console.warn("Unhandled type:", data.type);
